@@ -1,0 +1,28 @@
+<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript">	
+	function resources(){
+		var autocompleter = {
+			init: function(){
+				$('.autocomplete').each(function(i, el) {
+				    var $this = $(el);
+				    $this.autocomplete({
+				        source: $this.data('url'),
+				        minLength: 1,
+				        select: function( event, ui ) {
+				            $('#' + $this.data('id')).val(ui.item.id);
+				            $('#' + $this.data('id')).change();
+				        }
+				    });
+				});
+			},
+			reinit: function(){
+				autocompleter.init()
+			}
+		}
+
+		this.autocompleter = autocompleter;
+	}
+
+	sl_resources = new resources();
+	sl_resources.autocompleter.init();
+</script>

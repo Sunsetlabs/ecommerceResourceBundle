@@ -1,0 +1,25 @@
+services:
+    sl.cart.manager:
+        class: Sunsetlabs\EcommerceResourceBundle\Services\CartManager
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@session"
+            - "%sl.cart.class%"
+            - "%sl.cart.item.class%"
+    sl.order.manager:
+        class: Sunsetlabs\EcommerceResourceBundle\Services\OrderManager
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "%sl.order.class%"
+            - "%sl.order.form.extra.fields%"
+    sl.stock.manager:
+        class: Sunsetlabs\EcommerceResourceBundle\Services\StockManager
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "%sl.product.class%"
+    sunsetlabs_resource.form.autocomplete_entity_type:
+        class: Sunsetlabs\EcommerceResourceBundle\Form\Type\AutocompleteEntityType
+        arguments:
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: form.type, alias: autocomplete_entity }

@@ -1,0 +1,4 @@
+{% block autocomplete_entity_widget %}
+    {{ form_widget(form, { 'attr' : { 'class' : 'autocomplete-hidden', 'style' : 'display:none;' } }) }}
+    <input type="text" data-id="{{ form.vars.id }}" data-url="{{ path(form.vars.update_route) }}" class="autocomplete {{ attr.class|default('') }}" value="{{ form.vars.data|default('') }}">
+{% endblock %}

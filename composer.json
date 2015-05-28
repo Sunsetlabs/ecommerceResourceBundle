@@ -1,0 +1,23 @@
+{
+    "name": "sunsetlabs/resource-bundle",
+    "type": "symfony-bundle",
+    "description": "Base resources for ecommerce in Symfony2 applications",
+    "keywords": ["utils", "resources" ,"ecommerce"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alejo Rodriguez",
+            "email": "a.rodsott@gmail.com"
+        },
+        {
+            "name": "Sunsetlabs",
+            "homepage": "http://sunsetlabs.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Sunsetlabs\\EcommerceResourceBundle\\": "" }
+    },
+    "branch-alias" : {
+        "dev-master" : "master"
+    }
+}

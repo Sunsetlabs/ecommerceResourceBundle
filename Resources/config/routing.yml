@@ -1,0 +1,3 @@
+sunsetlabs_ecommerce_resource_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SunsetlabsEcommerceResourceBundle:Default:index }
