@@ -57,6 +57,11 @@ class CartManager implements CartManagerInterface
 		}
 		return $this;
 	}
+	public function clearCart()
+	{
+		$this->session->remove('cartid');
+		return $this;
+	}
 	public function updateCart()
 	{
 		$this->em->persist($this->cart);
