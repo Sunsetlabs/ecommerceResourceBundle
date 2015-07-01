@@ -20,23 +20,20 @@ class BaseAdminController extends EasyAdminController
 
     public function indexAction(Request $request)
     {
-        $result = $this->initialize($request);
-
-        // initialize() returns a Response object when an error occurs.
-        // This allows to display a detailed error message.
-        if ($result instanceof Response) {
-            return $result;
-        }
+        $this->initialize($request);
 
         $action = $request->query->get('action', 'list');
 
-        // for now, the homepage redirects to the 'list' action and view of the first entity
+        // for now, the homepage redirects to the 'list' action of the first entity
         if (null === $request->query->get('entity')) {
-            return $this->redirect($this->generateUrl('admin', array(
-                'action' => $action,
-                'entity' => $this->getNameOfTheFirstConfiguredEntity(),
-                'view'   => $this->view,
-            )));
+           return $this->redirect($this->generateUrl('admin', array(
+               'action' => $action,
+               'entity' => $this->getNameOfTheFirstConfiguredEntity(),
+           )));
+        }
+
+        if (!$this->isActionAllowed($action)) {
+           throw new ForbiddenActionException(array('action' => $action));
         }
 
         $entity_name = $this->entity['name'];
